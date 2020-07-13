@@ -36,7 +36,6 @@ public class NotificationService {
 
     public void generateNotification(String notificationMessage) {
         notificationProducer.generateNotification(notificationMessage);
-        notificationProducer.closeProducer();
     }
 
 }

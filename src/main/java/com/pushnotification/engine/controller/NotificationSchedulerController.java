@@ -1,8 +1,8 @@
 package com.pushnotification.engine.controller;
 
-import com.pushnotification.engine.dto.Response;
-import com.pushnotification.engine.dto.ScheduleNotificationRequest;
-import com.pushnotification.engine.dto.SimpleNotificationRequest;
+import com.pushnotification.engine.model.Response;
+import com.pushnotification.engine.model.ScheduleNotificationRequest;
+import com.pushnotification.engine.model.SimpleNotificationRequest;
 import com.pushnotification.engine.service.NotificationService;
 import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;

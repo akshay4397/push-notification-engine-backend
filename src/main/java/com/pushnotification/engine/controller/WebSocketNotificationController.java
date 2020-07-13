@@ -1,6 +1,6 @@
 package com.pushnotification.engine.controller;
 
-import com.pushnotification.engine.dto.Response;
+import com.pushnotification.engine.model.Response;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;

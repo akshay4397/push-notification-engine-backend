@@ -1,7 +1,8 @@
 package com.pushnotification.engine.kafka.producer;
 
-import com.pushnotification.engine.kafka.config.NotificationProducerConfig;
-import com.pushnotification.engine.kafka.constant.ProducerConstants;
+import com.pushnotification.engine.kafka.config.NotificationKafkaConfig;
+import com.pushnotification.engine.kafka.constant.KafkaConstants;
+import com.pushnotification.engine.model.NotificationFormat;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.slf4j.Logger;
@@ -17,13 +18,13 @@ public class NotificationProducer {
     private final Logger logger = LoggerFactory.getLogger(NotificationProducer.class);
 
     @Autowired
-    private NotificationProducerConfig notificationProducerConfig;
+    private NotificationKafkaConfig notificationKafkaConfig;
 
-    private KafkaProducer<String, String> notificationProducer;
+    private KafkaProducer<String, NotificationFormat> notificationProducer;
 
     private void initiateProducer() {
         if (this.notificationProducer == null) {
-            Properties producerProperties = notificationProducerConfig.getProducerConfig();
+            Properties producerProperties = notificationKafkaConfig.getProducerConfig();
             this.notificationProducer = new KafkaProducer<>(producerProperties);
         }
     }
@@ -32,7 +33,11 @@ public class NotificationProducer {
 
         initiateProducer();
 
-        ProducerRecord<String, String> notification = new ProducerRecord<>(ProducerConstants.NOTIFICATION_TOPIC, message);
+        NotificationFormat notificationFormat = new NotificationFormat();
+        notificationFormat.setMessage(message);
+        notificationFormat.setTimestamp(System.currentTimeMillis());
+
+        ProducerRecord<String, NotificationFormat> notification = new ProducerRecord<>(KafkaConstants.NOTIFICATION_TOPIC, notificationFormat);
 
         notificationProducer.send(notification, (recordMetadata, e) -> {
             if (e != null) {

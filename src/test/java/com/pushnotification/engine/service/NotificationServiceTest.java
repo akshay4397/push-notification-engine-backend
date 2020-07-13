@@ -14,7 +14,7 @@ public class NotificationServiceTest {
     public void startAScheduledJobTest() throws InterruptedException {
         notificationService.startAScheduledJob("Hello scheduled", 1L);
 
-//        notificationService.generateNotification("hello");
+        notificationService.generateNotification("hello");
         Thread.sleep(109999);
     }
 

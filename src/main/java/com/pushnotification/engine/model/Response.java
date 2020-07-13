@@ -1,4 +1,4 @@
-package com.pushnotification.engine.dto;
+package com.pushnotification.engine.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
