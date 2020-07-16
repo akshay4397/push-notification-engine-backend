@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 public class NotificationServiceTest {
 
-    @Autowired
+    //@Autowired
     private NotificationService notificationService;
 
-    @Test
+    //@Test
     public void startAScheduledJobTest() throws InterruptedException {
         notificationService.startAScheduledJob("Hello scheduled", 1L);
 

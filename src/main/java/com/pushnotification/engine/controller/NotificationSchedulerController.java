@@ -4,7 +4,6 @@ import com.pushnotification.engine.model.Response;
 import com.pushnotification.engine.model.ScheduleNotificationRequest;
 import com.pushnotification.engine.model.SimpleNotificationRequest;
 import com.pushnotification.engine.service.NotificationService;
-import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +16,7 @@ public class NotificationSchedulerController {
     private NotificationService notificationService;
 
     @PostMapping("/schedule")
-    public Response scheduleNotifications(@RequestBody @NotNull ScheduleNotificationRequest scheduleNotificationRequest) {
+    public Response scheduleNotifications(@RequestBody ScheduleNotificationRequest scheduleNotificationRequest) {
         String notificationMessage = scheduleNotificationRequest.getNotificationMessage();
         Long timeInterval = scheduleNotificationRequest.getTimeInterval();
 
@@ -27,7 +26,7 @@ public class NotificationSchedulerController {
     }
 
     @PostMapping("/generate")
-    public Response generateNotification(@RequestBody @NotNull SimpleNotificationRequest simpleNotificationRequest) {
+    public Response generateNotification(@RequestBody SimpleNotificationRequest simpleNotificationRequest) {
         String notificationMessage = simpleNotificationRequest.getNotificationMessage();
 
         notificationService.generateNotification(notificationMessage);
