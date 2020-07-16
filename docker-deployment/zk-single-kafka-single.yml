@@ -13,6 +13,7 @@ services:
     volumes:
       - ./zk-single-kafka-single/zoo1/data:/data
       - ./zk-single-kafka-single/zoo1/datalog:/datalog
+    network_mode: host
 
   kafka1:
     image: confluentinc/cp-kafka:5.5.0
@@ -31,3 +32,4 @@ services:
       - ./zk-single-kafka-single/kafka1/data:/var/lib/kafka/data
     depends_on:
       - zoo1
+    network_mode: host
